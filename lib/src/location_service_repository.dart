@@ -5,9 +5,7 @@ class LocationServiceRepository {
 
   LocationServiceRepository._();
 
-  factory LocationServiceRepository() {
-    return _instance;
-  }
+  factory LocationServiceRepository() => _instance;
 
   static const String isolateName = 'LocatorIsolate';
 
@@ -27,21 +25,13 @@ class LocationServiceRepository {
   }
 
   static double dp(double val, int places) {
-    double mod = pow(10.0, places);
+    double mod = pow(10.0, places) as double;
     return ((val * mod).round().toDouble() / mod);
   }
 
-  static String formatDateLog(DateTime date) {
-    return date.hour.toString() +
-        ":" +
-        date.minute.toString() +
-        ":" +
-        date.second.toString();
-  }
+  static String formatDateLog(DateTime date) =>
+      '${date.hour.toString()}:${date.minute.toString()}:${date.second.toString()}';
 
-  static String formatLog(LocationDto locationDto) {
-    return dp(locationDto.latitude, 4).toString() +
-        " " +
-        dp(locationDto.longitude, 4).toString();
-  }
+  static String formatLog(LocationDto locationDto) =>
+      '${dp(locationDto.latitude, 4).toString()} ${dp(locationDto.longitude, 4).toString()}';
 }
